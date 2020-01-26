@@ -2,14 +2,16 @@
   .header-left
     .header-left__top-items
       %p.header-left__top-items__name
-        toruhirashima
+        = current_user.name
+        -# toruhirashima
       %ul.header-left__top-items__icons
         %li.header-left__top-items__icons__new--groups
         = link_to "#", class: "header-left__top-items__icons__new--groups" do
           = icon('fas', 'edit', class: "header-left__top-items__icons__new--groups__btn--icon")
         %li.header-left__top-items__icons__edit--user
         = link_to "#", class: "header-left__top-items__icons__edit--user" do
-          = icon('fas', 'cog', class: "header-left__top-items__icons__edit--user__btn--icon")
+          = link_to edit_user_path(current_user) do
+            = icon('fas', 'cog', class: "header-left__top-items__icons__edit--user__btn--icon")
 
   .header-right
     .header-right__left-box

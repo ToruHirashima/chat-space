@@ -1,0 +1,43 @@
+.header
+  .header-left
+    .header-left__top-items
+      %p.header-left__top-items__name
+        toruhirashima
+      %ul.header-left__top-items__icons
+        %li.header-left__top-items__icons__new--groups
+        = link_to "#", class: "header-left__top-items__icons__new--groups" do
+          = icon('fas', 'edit', class: "header-left__top-items__icons__new--groups__btn--icon")
+        %li.header-left__top-items__icons__edit--user
+        = link_to "#", class: "header-left__top-items__icons__edit--user" do
+          = icon('fas', 'cog', class: "header-left__top-items__icons__edit--user__btn--icon")
+
+  .header-right
+    .header-right__left-box
+      %h2.header-right__left-box__current__group
+        test
+      %ul.header-right__left-box__member__list
+        member：
+        %li.header-right__left-box__member__list__member
+          toruhirashima
+    = link_to "#", class: "header-right__right-box" do
+      Edit
+
+.contents
+  .content-left
+    .content-left__group
+      %p.content-left__group--name
+        techcamp
+      %p.content-left__group--latest--message
+        まだメッセージがありません
+  .contents-main
+    .contents-main__footer
+      .input-box
+        .input-box__1
+          %input{type:"text", placeholder:"type a message", class:"input-box__message"}
+
+        %label{class: "input-box__image"}
+          = icon('fas', 'image')
+          %input{type: "file", class: "input-box__image-icon"}
+
+        .input-send
+          Send

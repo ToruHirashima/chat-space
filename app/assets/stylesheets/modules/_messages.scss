@@ -21,38 +21,38 @@ html, body {
     align-items: center; // top-itemsを上下中央寄せ
     padding: 0 20px;
     float: left;
-    .header-left__top-items {
+      &__top-items {
       height: 20px;
       width: 260px;
       background-color: #333333;
       display: flex;
       justify-content: space-between;
-      p.header-left__top-items__name {
-        line-height:normal;
-        width: 200px;
-        float:left;
-        font-size: 16px;
-        color: white;
-      }
-      ul.header-left__top-items__icons {
+        &__name {
+          line-height:normal;
+          width: 200px;
+          float:left;
+          font-size: 16px;
+          color: white;
+        }
+      &__icons {  
         display: flex;
         height: 24px;
         width: 60px;
         float:right;
-        li.header-left__top-items__icons__new--groups{
+        &__new--groups{
           width: 30px;
           margin-left: 5px;
         }
-        .header-left__top-items__icons__new--groups__btn--icon{
+        &__new--groups__btn--icon{
           color:white;
           display: inline-block;
           text-decoration: none;
         }
-        li.header-left__top-items__icons__edit--user{
+        &__edit--user{
           width: 30px;
           margin-left: 5px;
         }
-        .header-left__top-items__icons__edit--user__btn--icon{
+        &__edit--user__btn--icon{
           color:white;
           display: inline-block;
           text-decoration: none;
@@ -66,7 +66,7 @@ html, body {
     padding: 0 40px;
     float: right;
     position: relative;
-    .header-right__left-box{
+    &__left-box{
       margin-top: 35px;
       float: left;
       h2.header-right__left-box__current__group{
@@ -104,7 +104,7 @@ html, body {
     width: 300px;
     float: left;
     padding: 20px 20px 0;
-    .content-left__group{
+    &__group{
       height:45px;
       width:260px;
       margin-bottom: 40px;
@@ -124,20 +124,20 @@ html, body {
     width: calc(100% - 300px);
     float: right;
     position: relative;
-  }
-  .contents-main__footer {  
-    height: 90px;
-    background-color: #d2d2d2;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    padding: 20px 40px;
+    &__footer {
+      height: 90px;
+      background-color: #d2d2d2;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      padding: 20px 40px;
+    }
   }
 }
 
 .input-box{
   display: flex;
-  .input-box__1{
+  &__1{  
     position: relative;
     width: 100%;
     .input-box__message{
@@ -148,7 +148,7 @@ html, body {
       border-style: none;
     }
   }
-  .input-box__image{
+  &__image{
     font-size: 1.3rem;
     position: absolute;
     cursor: pointer;

@@ -3,11 +3,11 @@
     .header-left__top-items
       %p.header-left__top-items__name
         = current_user.name
-        -# toruhirashima
       %ul.header-left__top-items__icons
         %li.header-left__top-items__icons__new--groups
         = link_to "#", class: "header-left__top-items__icons__new--groups" do
-          = icon('fas', 'edit', class: "header-left__top-items__icons__new--groups__btn--icon")
+          = link_to new_group_path do
+            = icon('fas', 'edit', class: "header-left__top-items__icons__new--groups__btn--icon")
         %li.header-left__top-items__icons__edit--user
         = link_to "#", class: "header-left__top-items__icons__edit--user" do
           = link_to edit_user_path(current_user) do
@@ -28,7 +28,12 @@
   .content-left
     .content-left__group
       %p.content-left__group--name
-        techcamp
+        -# techcamp
+        - current_user.groups.each do |group|
+          .group
+            = link_to '#' do
+              .group__name
+                = group.name
       %p.content-left__group--latest--message
         まだメッセージがありません
   .contents-main

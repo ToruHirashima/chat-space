@@ -1,0 +1,32 @@
+.chat-main
+  -# ③領域
+  .main-header
+    .main-header__left-box
+      %h2.main-header__left-box__current__group
+        -# グループ名を表示
+        = @group.name
+        -# test
+      %ul.main-header__left-box__member__list
+        member：
+        %li.main-header__left-box__member__list__member
+          -# ユーザー名を表示
+          = current_user.name
+    -# グループ編集へリンク
+    = link_to edit_group_path(@group.id), class: "main-header__right-box" do 
+      Edit
+
+  -# ④領域
+  .messages
+    = render @messages
+
+  -# ⑤領域
+  .form
+    .input-box
+      .input-box__1
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'input-box__message', placeholder: 'type a message'
+          .form__mask
+            = f.label :image, class: 'input-box__image' do
+              = icon('fas', 'image', class: 'input-box__image-icon')
+              = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'input-send'

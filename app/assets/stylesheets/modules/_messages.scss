@@ -1,173 +1,183 @@
-* {
+*{
   box-sizing: border-box;
 }
+.wrapper {
+  display: flex; // 一旦記載。sampleには本記載なし。
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.header {
-  background-color:#ffffff;
-  height: 100px;
-  position: fixed;
-  width: 100%;
-  .header-left {
-    background-color:#253141;
+  // ①、②領域
+  .chat-side {
+    height: 100vh; // 一旦記載。sampleには本記載なし。後で子要素に高さを持たせた後、削除
     width: 300px;
-    height: 100%;
-    display: flex; // top-itemsを上下中央寄せ
-    align-items: center; // top-itemsを上下中央寄せ
-    padding: 0 20px;
-    float: left;
+    // background-color: blue;
+    // padding: 20px 20px ;
+    // ①領域
+    .side-header{
+      background-color: #253141;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
       &__top-items {
-      height: 20px;
-      width: 260px;
-      background-color: #333333;
+        height: 20px;
+        width: 260px;
+        background-color: #333333;
+        display: flex;
+        justify-content: space-between;
+          &__name {
+            line-height:normal;
+            width: 200px;
+            float:left;
+            font-size: 16px;
+            color: white;
+          }
+        &__icons {  
+          display: flex;
+          height: 24px;
+          width: 60px;
+          float:right;
+          display: flex;
+          &__new--groups{
+            width: 30px;
+            margin-left: 5px;
+          }
+          &__new--groups__btn--icon{
+            color:white;
+            display: inline-block;
+            text-decoration: none;
+          }
+          &__edit--user{
+            width: 30px;
+            margin-left: 5px;
+          }
+          &__edit--user__btn--icon{
+            color:white;
+            display: inline-block;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    // ②領域
+    .groups{
+      height: calc(100vh - 100px);
+      background-color: #2f3e51;
+      padding: 20px 20px 0;
+      overflow: auto; // sampleでは「overflow: scroll;」
+      .group{
+        height:45px;
+        width:260px;
+        margin-bottom: 40px;
+        &__name{
+          color: white;
+          font-size: 15px;
+          margin-bottom: 5px;
+        }
+        &__latest--message{
+          color: white;
+          font-size: 11px;
+        }
+      }
+    }
+  }
+  
+  // ③、④、⑤領域
+  .chat-main {
+    height: 100vh; // 一旦記載。sampleには本記載なし。後で子要素に高さを持たせた後、削除
+    width: calc(100vw - 300px);
+    // background-color: red;
+   
+    // ③領域
+    .main-header {
+      // background-color:green;
+      height: 100px;
+      padding: 0 40px;
       display: flex;
       justify-content: space-between;
-        &__name {
-          line-height:normal;
-          width: 200px;
-          float:left;
-          font-size: 16px;
-          color: white;
+      border-bottom: solid 1px #eee;
+      overflow: auto; // sampleでは「overflow: scroll;」
+      &__left-box{
+        margin-top: 35px;
+        float: left;
+        h2.main-header__left-box__current__group{
+          font-size: 20px;
+          color: #333;
+          margin-bottom: 15px;
         }
-      &__icons {  
-        display: flex;
-        height: 24px;
-        width: 60px;
-        float:right;
-        &__new--groups{
-          width: 30px;
-          margin-left: 5px;
-        }
-        &__new--groups__btn--icon{
-          color:white;
-          display: inline-block;
-          text-decoration: none;
-        }
-        &__edit--user{
-          width: 30px;
-          margin-left: 5px;
-        }
-        &__edit--user__btn--icon{
-          color:white;
-          display: inline-block;
-          text-decoration: none;
+        ul.main-header__left-box__member__list{
+          display: flex;
+          font-size: 12px;
+          color: #999999;
         }
       }
-    }
-  }
-  .header-right{
-    width: calc(100% - 300px);
-    height: 100px;
-    padding: 0 40px;
-    float: right;
-    position: relative;
-    &__left-box{
-      margin-top: 35px;
-      float: left;
-      h2.header-right__left-box__current__group{
-        font-size: 20px;
-        color: #333;
-        margin-bottom: 15px;
-      }
-      ul.header-right__left-box__member__list{
-        display: flex;
-        font-size: 12px;
-        color: #999999;
+      a.main-header__right-box{
+        height: 40px;
+        line-height: 40px;
+        padding: 0 20px;
+        margin-top: 30px;
+        border: solid 1px #38aef0;
+        position: absolute;
+        right: 40px;
+        float: right;
       }
     }
-    a.header-right__right-box{
-      height: 40px;
-      line-height: 40px;
-      padding: 0 20px;
-      margin-top: 30px;
-      border: solid 1px #38aef0;
-      position: absolute;
-      right: 40px;
-      float: right;
-    }
-  }
-}
 
-.contents {
-  background-color: #fafafa;
-  height: calc(100vh);
-  padding-top: 100px;
-  width: 100%;
-  .content-left {
-    background-color:#2f3e51;
-    height: 100%;
-    width: 300px;
-    float: left;
-    padding: 20px 20px 0;
-    &__group{
-      height:45px;
-      width:260px;
-      margin-bottom: 40px;
-      p.content-left__group--name{
-        color: white;
-        font-size: 15px;
-        margin-bottom: 5px;
-      }
-      p.content-left__group--latest--message{
-        color: white;
-        font-size: 11px;
-      }
+    // ④領域
+    .messages {
+      height: calc(100vh - 190px);
+      padding: 46px 40px;
+      background-color: #fafafa;
+      overflow: scroll;
     }
-  }
-  .contents-main {
-    height: 100%;
-    width: calc(100% - 300px);
-    float: right;
-    position: relative;
-    &__footer {
+    
+    // ⑤領域
+    .form {
       height: 90px;
-      background-color: #d2d2d2;
-      width: 100%;
-      position: absolute;
-      bottom: 0;
       padding: 20px 40px;
+      background-color: #ddd;
+      .input-box{
+        display: flex;
+        position: relative;
+        width: 100%;
+        display:flex;
+        &__1{
+          .new_message{
+            display:flex;
+          }
+          position: relative;
+          width: 100%;
+          .input-box__message{
+            height: 50px;
+            width: 100%;
+            padding: 0 40px 0 10px;
+            color: #434a54;
+            border-style: none;
+
+          }
+        }
+        &__image{
+          font-size: 1.3rem;
+          position: absolute;
+          cursor: pointer;
+          right: 130px;
+          top: 10px;
+          .input-box__image-icon{
+            // display: none;
+          }
+          .hidden{
+            display:none;
+          }
+        }
+        .input-send{
+          width: 100px;
+          height: 50px;
+          padding: 0 30px;
+          margin-left: 15px;
+          background-color: #38aef0;
+          color: white;
+          cursor: pointer;
+          line-height: 50px;
+        }
+      }
     }
   }
 }
-
-.input-box{
-  display: flex;
-  &__1{  
-    position: relative;
-    width: 100%;
-    .input-box__message{
-      height: 50px;
-      width: 100%;
-      padding: 0 40px 0 10px;
-      color: #434a54;
-      border-style: none;
-    }
-  }
-  &__image{
-    font-size: 1.3rem;
-    position: absolute;
-    cursor: pointer;
-    right: 168px;
-    top: 30px;
-    .input-box__image-icon{
-      display: none;
-    }
-  }
-  .input-send{
-    width: 100px;
-    height: 50px;
-    padding: 0 30px;
-    margin-left: 15px;
-    background-color: #38aef0;
-    color: white;
-    cursor: pointer;
-    line-height: 50px;
-  }
-}
-
-

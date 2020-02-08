@@ -1,50 +1,28 @@
-.header
-  .header-left
-    .header-left__top-items
-      %p.header-left__top-items__name
+-#①、②領域
+.chat-side
+  -# ①領域
+  .side-header
+    .side-header__top-items
+      %p.side-header__top-items__name
         = current_user.name
-      %ul.header-left__top-items__icons
-        %li.header-left__top-items__icons__new--groups
-        = link_to "#", class: "header-left__top-items__icons__new--groups" do
-          = link_to new_group_path do
-            = icon('fas', 'edit', class: "header-left__top-items__icons__new--groups__btn--icon")
-        %li.header-left__top-items__icons__edit--user
-        = link_to "#", class: "header-left__top-items__icons__edit--user" do
-          = link_to edit_user_path(current_user) do
-            = icon('fas', 'cog', class: "header-left__top-items__icons__edit--user__btn--icon")
+      %ul.side-header__top-items__icons
+        %li.side-header__top-items__icons__new--groups
+        -# = link_to "new_group_path", class: "side-header__top-items__icons__new--groups" do
+        = link_to new_group_path do
+          = icon('fas', 'edit', class: "side-header__top-items__icons__new--groups__btn--icon")
+        %li.side-header__top-items__icons__edit--user
+        -# = link_to "#", class: "side-header__top-items__icons__edit--user" do
+        -#  edit_user_path:GETの名前付きルート。特定のユーザーを表示。
+        = link_to edit_user_path(current_user) do 
+          = icon('fas', 'cog', class: "side-header__top-items__icons__edit--user__btn--icon")
 
-  .header-right
-    .header-right__left-box
-      %h2.header-right__left-box__current__group
-        test
-      %ul.header-right__left-box__member__list
-        member：
-        %li.header-right__left-box__member__list__member
-          toruhirashima
-    = link_to "#", class: "header-right__right-box" do
-      Edit
-
-.contents
-  .content-left
-    .content-left__group
-      %p.content-left__group--name
-        -# techcamp
-        - current_user.groups.each do |group|
-          .group
-            = link_to '#' do
-              .group__name
-                = group.name
-      %p.content-left__group--latest--message
-        まだメッセージがありません
-  .contents-main
-    .contents-main__footer
-      .input-box
-        .input-box__1
-          %input{type:"text", placeholder:"type a message", class:"input-box__message"}
-
-        %label{class: "input-box__image"}
-          = icon('fas', 'image')
-          %input{type: "file", class: "input-box__image-icon"}
-
-        .input-send
-          Send
+  -# ②領域
+  .groups
+    - current_user.groups.each do |group|
+      .group
+        -# group_messages_path：？？？
+        = link_to group_messages_path(group) do
+          .group__name
+            = group.name
+          .group__group--name__latest--message
+            = group.show_last_message

@@ -8,7 +8,7 @@ $(function(){
              ${message.user_name}
            </div>
            <div class="upper-message__date">
-             ${message.date}
+             ${message.created_at}
            </div>
          </div>
          <div class="lower-message">
@@ -27,7 +27,7 @@ $(function(){
              ${message.user_name}
            </div>
            <div class="upper-message__date">
-             ${message.date}
+             ${message.created_at}
            </div>
          </div>
          <div class="lower-message">
@@ -56,10 +56,12 @@ $('#new_message').on('submit', function(e){
     $('.messages').append(html);
     $('form')[0].reset();
     $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
-    $('.input-send').prop("disabled", false);
   })
   .fail(function() {
     alert("メッセージ送信に失敗しました");
+  })
+  .always(function() {
+    $('.input-send').prop("disabled", false);
   });
 })
 });

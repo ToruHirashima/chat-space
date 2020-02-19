@@ -10,7 +10,9 @@
         member：
         %li.main-header__left-box__member__list__member
           -# ユーザー名を表示
-          = current_user.name
+          -# - current_user.groups.each do |group|
+          - @group.users.each do |user|
+            = user.name
     -# グループ編集へリンク
     = link_to edit_group_path(@group.id), class: "main-header__right-box" do 
       Edit
